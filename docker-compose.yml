@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  
+  stone.api:
+    image: stone.api
+    build:
+      context: ./src/Stone/API/Stone.API
+      dockerfile: Dockerfile

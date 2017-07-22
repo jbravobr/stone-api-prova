@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  
+  stone.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
