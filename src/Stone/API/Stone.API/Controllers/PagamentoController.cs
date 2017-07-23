@@ -120,6 +120,21 @@ namespace Stone.API.Controllers
             return new ObjectResult(payment);
         }
 
+		[HttpGet("{estabelecimentoid}", Name = "GetPagamentoByCliente")]
+		public async Task<IActionResult> GetPagamentoByEstabelecimentoId(string id)
+		{
+			if (string.IsNullOrEmpty(id))
+				return BadRequest();
+
+			Expression<Func<Pagamento, bool>> filter = (x) => x.EstabelecimentoID == id;
+			var payment = await _PagamentoService.Buscar(filter);
+
+			if (payment == null)
+				return NotFound();
+
+			return new ObjectResult(payment);
+		}
+
         [HttpGet("{id}", Name = "GetPagamento")]
         public async Task<IActionResult> GetPagamentoById(string id)
         {
